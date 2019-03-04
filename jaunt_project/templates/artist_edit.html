@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}Edit Profile{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-md-8">
+    <form method="post">
+      {% csrf_token %}
+      <div class ="row">
+        <h1 class="mt-2">Edit Profile</h1>
+        <hr class="mt-0 mb-4">
+      </div>
+      <div class = "row">
+        <div class= "col-4">
+          {{ form.artist_name| as_crispy_field }}
+        </div>
+        <div class= "col-4">
+          {{ form.genre| as_crispy_field }}
+        </div>
+      </div>
+      <div class = "row">
+        <div class= "col-4">
+          {{ form.city| as_crispy_field }}
+        </div>
+        <div class= "col-4">
+          {{ form.state| as_crispy_field }}
+        </div>
+      </div>
+      <div class = "row">
+        <div class= "col-4">
+          {{ form.contact_first_name| as_crispy_field }}
+        </div>
+        <div class= "col-4">
+          {{ form.contact_last_name| as_crispy_field }}
+        </div>
+      </div>
+       <div class = "row">
+        <div class= "col-4">
+          {{ form.contact_phone| as_crispy_field }}
+        </div>
+        <div class= "col-4">
+          {{ form.contact_email| as_crispy_field }}
+        </div>
+      </div>
+      <div class = "row">
+        <div class= "col-4">
+          {{form.description | as_crispy_field }}
+        </div>
+        <div class= "col-2">
+          {{ form.twitter| as_crispy_field }}
+          {{ form.instagram| as_crispy_field }}
+          {{ form.bandcamp| as_crispy_field }}
+        </div>
+      </div>
+      <div class = "row">
+        <div class = "col-4">
+          <button type="submit" class="btn btn-success">Update</button>
+        </div>
+      </div>
+    </form> 
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}Artist Profile{% endblock %}
+
+{% block content %}
+{% if user.is_authenticated %}
+<div class = "row">
+  <div class="col-2 bd-sidebar">
+    <div class="dropdown">
+      <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Profile Menu
+       </a>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+        <a class="dropdown-item" href="{% url 'artist_profile:image_choice' artistprofile.id %}">Change Image</a>
+        <a class="dropdown-item" href="{% url 'artist_profile:artist_edit' artistprofile.id %}">Edit Profile</a>
+        <a class="dropdown-item" href="{% url 'artist_profile:artist_delete' artistprofile.id %}">Delete Profile</a>
+      </div>
+    </div>
+  </div>
+  <div class="col-6 bd-content">
+    {% if profile_pic %}
+    <img src="{{ profile_pic.image.url}}" alt="{{ artistimage.artist_name}}" style="width: 400px">
+  {% else %}
+  {% endif %}
+    <h1 class="bd-title">{{artistprofile.artist_name}}</h1>
+    <p class= "bd-lead">{{artistprofile.city}},{{artistprofile.state}}</p>
+    <p class= "bd-lead">{{artistprofile.genre}}</p>
+    {% if artistprofile.twitter %}
+      <p>Twitter: <i class="fab fa-twitter"></i><a href= "https:twitter.com/{{artistprofile.twitter}}">@{{artistprofile.twitter}}</a></p>
+    {% endif %}
+    {% if artistprofile.instagram %}
+      <p>Instagram: <i class="fab fa-instagram"></i> <a href= "https:instagram.com/{{artistprofile.instagram}}">@{{artistprofile.instagram}}</a></p>
+    {% endif %}
+    {% if artistprofile.facebook %}
+      <p>Facebook: <i class="fab fa-facebook"></i><a href= "https:facebook.com/{{artistprofile.twitter}}">{{artistprofile.facebook}}</a></p>
+    {% endif %}
+    {% if artistprofile.bandcamp %}
+     <p>bandcamp: <i class="fab fa-bandcamp"></i> <a href= "https:{{artistprofile.bandcamp}}.bandcamp.com/">{{artistprofile.bandcamp}}</a></p>
+    {% endif %}
+    <p>{{artistprofile.description}}</p>
+      {% else %}
+        <p>You are not logged in</p>
+        <a href="{% url 'login' %}">login</a> |
+        <a href="{% url 'signup' %}">sign up</a>
+      {% endif %}
+  </div>
+   <div class=" col-4 bd-content">
+    <h1 class="bd-title">Tours</h1>
+  {% if tours %}
+    {% for tour in tours%}
+    <p><a href= "{% url 'tours:tours_detail' tour.id%}" >{{tour.tour_name}}</a> Starting: {{tour.date_start}}</p>
+    {% endfor %}
+     {%endif%}
+  <a type="button" class="btn btn-secondary" href="{% url 'tours:tours_new'  %}">Create Tour</a>
+ 
+  </div>
+</div>
+{% endblock %}
+

@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}Edit Tour{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-md-8">
+    <h1 class="mt-2">Edit Tour Proposal</h1>
+    <hr class="mt-0 mb-4">
+    <form method="post">
+      {% csrf_token %}
+      <div class = "row">
+        <div class= "col-4">
+          {{ form.artist| as_crispy_field }}
+        </div>
+        <div class= "col-4">
+          {{ form.tour_name| as_crispy_field }}
+        </div>
+      </div>
+       <div class = "row">
+        <div class= "col-8">
+          {{ form.performers| as_crispy_field }}
+        </div> 
+      </div>
+       <div class = "row">
+        <div class= "col-4">
+          {{ form.guarantee| as_crispy_field }}
+        </div>
+        <div class= "col-2">
+          {{ form.door_split| as_crispy_field }}
+          {{ form.hotel_needed| as_crispy_field }}
+        </div>
+        <div class= "col-2">
+          {{form.venue_size | as_crispy_field }}
+        </div>
+      </div>
+      <div class = "row">
+        <div class= "col-3">
+          {{ form.date_start| as_crispy_field }}
+        </div>
+        <div class= "col-3"> 
+          {{ form.date_end| as_crispy_field }}  
+        </div>
+        <div class= "col-3">
+         {{ form.region| as_crispy_field }}
+        </div> 
+      </div>
+      <div class = "row">
+        <div class = "col-4">
+          <button type="submit" class="btn btn-success">Save</button>
+        </div>
+      </div>
+    </form> 
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+
+{% block title %}Tour Profile{% endblock %}
+
+{% block content %}
+{% if user.is_authenticated %}
+{% comment %} <div class= "row">
+  <div class="col-2 bd-sidebar">
+    <div class="btn-group-vertical bd-sidebar btn-group-lg" role="group" >
+      <h1 class="mt-2">Menu</h1>
+      {% comment % <a href="{% url 'tour:image_choice' tour.id %}" type="button" class="btn btn-secondary">Change Image</a> {% endcomment %}
+      {% comment %} <a type="button" class="btn btn-secondary"href="{% url 'tours:tour_edit' tour.id %}">Edit Tour Details</a>
+      <a type="button" class="btn btn-secondary" href="{% url 'tours:tour_delete' tour.id %}">Delete Tour</a>
+    </div> {% endcomment %} 
+<div class = "row">
+  <div class="col-2 bd-sidebar">
+    <div class="dropdown">
+  <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+   Tour Menu
+  </a>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+    <a class="dropdown-item" href="{% url 'tours:tour_edit' tour.id %}">Edit Tour</a>
+    <a class="dropdown-item" href="{% url 'tours:tour_delete' tour.id %}">Delete Profile</a>
+  </div>
+</div>
+  </div>
+  <div class=" col-5 bd-content">
+    <img src ="{% static 'images/street_map.jpg' %}" alt= "street map">
+    <h1 class="bd-title">Tour: {{tour.tour_name}}</h1>
+    <p class= "bd-lead">Performing Acts: {{tour.performers}}</p>
+    <p class= "bd-lead">{{tour.date_start}} - {{tour.date_end}}</p>
+    <p class= "bd-lead">Region: {{tour.region}} </p>
+    <p class= "bd-lead">Asking Price:${{tour.guarantee}} </p>
+    <p class= "bd-lead">Venue Size: {{tour.venue_size}} </p>
+  </div>
+
+      {% else %}
+        <p>You are not logged in</p>
+        <a href="{% url 'login' %}">login</a> |
+        <a href="{% url 'signup' %}">sign up</a>
+      {% endif %}
+  <div class=" col-3 bd-content">
+    <h1>Cities and Possible Venues</h1>
+    <ul class="list-group list-group flush">
+  {% for city in cities %}
+    <li class="list-group-item"><strong> {{city.city}}, {{city.state}} </strong></li>
+      <ul>
+   {% for venue in city.venue_set.all %}
+      <li> {{venue.name}} | Capacity: {{venue.capacity}} </li>
+    {% endfor %}
+      </ul>
+  {% endfor %}
+    </ul>
+  </div>
+{% endblock %}

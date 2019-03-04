@@ -1,2 +1,4 @@
 # jaunt_app
-tour booking app for musicians
+Tour booking app to assist musicians in planning and booking a successful tour.
+
+

@@ -11,6 +11,10 @@ from artist_profile.forms import ImageForm
 from .models import Tour, Venue, City
 import ast
 from geopy.geocoders import GeoNames
+
+
+# need to create python TPS to creat optimum route 
+#look at RESTApi to use React front end
 # create tour proposal and then compile list of cities to book
 def tour_proposal(request): 
   if request.method == "POST":

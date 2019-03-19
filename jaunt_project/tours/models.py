@@ -3,6 +3,8 @@ from django.urls import reverse
 from users.models import CustomUser
 from artist_profile.models import ArtistProfile, ArtistImage
 
+
+# convert to POSTGis database to build Geolocation
 class Tour(models.Model):
   artist = models.ForeignKey(ArtistProfile, on_delete=models.CASCADE)
   tour_name = models.CharField(max_length= 200)

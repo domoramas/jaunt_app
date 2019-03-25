@@ -10,7 +10,7 @@ from artist_profile.models import ArtistProfile, ArtistImage
 from artist_profile.forms import ImageForm
 from .models import Tour, Venue, City
 import ast
-from geopy.geocoders import GeoNames
+
 
 
 # need to create python TPS to creat optimum route 

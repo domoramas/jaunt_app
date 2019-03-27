@@ -11,6 +11,7 @@ from .forms import ImageForm
 from tours.models import Tour, Venue
 
 # View of detailed Artist view
+# select picture view breaks when no picture is selected
 class ArtistView(LoginRequiredMixin, DetailView):
   model = ArtistProfile
   template_name = "artist.html"

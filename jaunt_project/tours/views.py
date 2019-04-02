@@ -43,10 +43,10 @@ def tour_proposal(request):
       tour.save()
       cities = City.objects.order_by('priority')
       days = tour.date_end - tour.date_start
-      days = days.days
+      days = (days.days) +1
       print(days)
       city_list = []
-      while days > len(city_list):
+      while days >= len(city_list):
         for city in cities:
           if city.priority == 1:
             if days > 0:
@@ -85,11 +85,11 @@ def edit(request, pk):
       tour.region = form.cleaned_data["region"]
       tour.save()
       cities = City.objects.order_by('priority')
-      days = tour.date_end - tour.date_start
-      days = days.days
+      days = tour.date_end - tour.date_start 
+      days = (days.days) + 1
       print(days)
       city_list = []
-      while days > len(city_list):
+      while days >= len(city_list):
         for city in cities:
           if city.priority == 1:
             if days > 0:

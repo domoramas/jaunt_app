@@ -4,6 +4,8 @@ from . import models
 from artist_profile.models import ArtistProfile
 from users.models import CustomUser
 from django.utils.translation import gettext_lazy as _
+import datetime
+
 
 VENUE_SIZE_CHOICES = [
   ( "50- 150", "SM (50- 150)"),
@@ -38,8 +40,9 @@ class CreateTour(forms.Form):
     widget=forms.Select( 
     choices=VENUE_SIZE_CHOICES)
     )
-  date_start = forms.DateField(widget= forms.SelectDateWidget, label= "Start Date")
-  date_end = forms.DateField(widget= widgets.SelectDateWidget, label= "End Date")
+     #  set start and end dates to todays date by default
+  date_start = forms.DateField(widget= forms.SelectDateWidget, label= "Start Date", initial = datetime.date.today)
+  date_end = forms.DateField(widget= widgets.SelectDateWidget, label= "End Date", initial = datetime.date.today)
   region = forms.MultipleChoiceField(
     widget=forms.CheckboxSelectMultiple,
     choices=REGION_CHOICES)
@@ -57,7 +60,6 @@ class CreateTourModelform(ModelForm):
     labels = {
       'tour_name': _('Tour Name'),
       'guarantee': _('Guarantee $'),
-      #  set start and end dates to todays date by default
       'date_start': _('Start Date'), 
       'date_end': _('End Date'),
     }

@@ -57,7 +57,8 @@ class CreateTourModelform(ModelForm):
     labels = {
       'tour_name': _('Tour Name'),
       'guarantee': _('Guarantee $'),
-      'date_start': _('Start Date'),
+      #  set start and end dates to todays date by default
+      'date_start': _('Start Date'), 
       'date_end': _('End Date'),
     }
     widgets = {

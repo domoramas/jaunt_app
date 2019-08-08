@@ -44,6 +44,7 @@
       {% endif %}
   <div class=" col-3 bd-content">
     <h1>Cities and Possible Venues</h1>
+    {% comment %} attatch possibe dates to the list {% endcomment %}
     <ul class="list-group list-group flush">
   {% for city in cities %}
     <li class="list-group-item"><strong> {{city.city}}, {{city.state}} </strong></li>

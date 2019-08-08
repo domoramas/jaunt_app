@@ -23,7 +23,7 @@
             ],
             "index": "pypi",
 <<<<<<< HEAD
-            "version": "==2.2.3"
+            "version": "==2.2.4"
 =======
             "version": "==2.2.3"
 >>>>>>> ce3ec35af7467537d6ac07d478115459f9dcb74d

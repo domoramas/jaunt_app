@@ -6,3 +6,6 @@ class CustomUser(AbstractUser):
 
   def __str__(self):
     return self.username
+
+
+    # add title options for user - (artist, promoter, agent each with its own permission and views)

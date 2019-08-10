@@ -27,3 +27,6 @@ class DashboardView(generic.ListView):
 
   #   print(context)
   #   return context
+
+
+  

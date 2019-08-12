@@ -46,20 +46,23 @@ def tour_proposal(request):
       days = (days.days) +1
       print(days)
       city_list = []
-      while days >= len(city_list):
+      while days >= len(city_list) and len(cities) > len(city_list):
         for city in cities:
           if city.priority == 1:
             if days > 0:
-              city_list.append((city.city, city.state))
-              days -= 1
+              if (city.city, city.state) not in city_list:
+                city_list.append((city.city, city.state))
+                days -= 1
           elif city.priority == 2:
             if days >0:
-              city_list.append((city.city, city.state))
-              days -= 1
+              if (city.city, city.state) not in city_list:
+                city_list.append((city.city, city.state))
+                days -= 1
           elif city.priority == 3:
             if days > 0:
-              city_list.append((city.city, city.state))
-              days -= 1
+              if (city.city, city.state) not in city_list:
+                city_list.append((city.city, city.state))
+                days -= 1
       tour.city_list = city_list
       tour.save()
       form = CreateTour(request.user)
@@ -88,21 +91,28 @@ def edit(request, pk):
       days = tour.date_end - tour.date_start 
       days = (days.days) + 1
       print(days)
+      print(len(cities))
       city_list = []
-      while days >= len(city_list):
+      while days >= len(city_list) and len(cities) > len(city_list):
         for city in cities:
           if city.priority == 1:
             if days > 0:
-              city_list.append((city.city, city.state))
-              days -= 1
+              if (city.city, city.state) not in city_list:
+                city_list.append((city.city, city.state))
+                days -= 1
+                print(city_list)
           if city.priority == 2:
             if days >0:
-              city_list.append((city.city, city.state))
-              days -= 1
+              if (city.city, city.state) not in city_list:
+                city_list.append((city.city, city.state))
+                days -= 1
+                print(city_list)
           if city.priority == 3:
             if days > 0:
-              city_list.append((city.city, city.state))
-              days -= 1
+              if (city.city, city.state) not in city_list:
+                city_list.append((city.city, city.state))
+                days -= 1
+                print(city_list)
       tour.city_list = city_list
       tour.save()
       return HttpResponseRedirect(reverse('tours:tours_detail', args=(tour.id,) ))

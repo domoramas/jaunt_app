@@ -43,7 +43,7 @@ class City(models.Model):
   city = models.CharField(max_length= 20)
   state = models.CharField(max_length = 2)
   priority = models.IntegerField()
-
+# add coordinates to city 
   class Meta:
     verbose_name_plural = "Cities"
     

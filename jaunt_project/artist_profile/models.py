@@ -33,3 +33,6 @@ class ArtistImage(models.Model):
  
   # def get_absolute_url(self):
   #       return reverse('artist_profile:artist_detail', args=(artist.id))
+
+
+  # find better way to store images for artist

@@ -78,3 +78,7 @@ class CreateTourModelform(ModelForm):
     def __init__(self, user, *args, **kwargs):
       super(CreateTour, self).__init__(*args, **kwargs)
       self.fields['artist'].queryset = ArtistProfile.objects.filter(user=user)
+
+
+
+      # add image upload for tour flyers and press release

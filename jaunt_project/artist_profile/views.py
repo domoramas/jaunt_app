@@ -25,6 +25,7 @@ class ArtistView(LoginRequiredMixin, DetailView):
     return context
 
 # view to create artist view
+# find way to integrate photo upload better
 class CreateArtistView(LoginRequiredMixin,CreateView):
   model = ArtistProfile
   template_name = 'artist_create.html'

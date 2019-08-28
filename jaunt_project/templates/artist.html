@@ -52,7 +52,7 @@
     <p><a href= "{% url 'tours:tours_detail' tour.id%}" >{{tour.tour_name}}</a> Starting: {{tour.date_start}}</p>
     {% endfor %}
      {%endif%}
-  <a type="button" class="btn btn-primary" href="{% url 'tours:tours_new'  %}">Create Tour</a>
+  <a  class="btn btn-secondary" href="{% url 'tours:tours_new'  %}"role = "button" >Create Tour</a>
  
   </div>
 </div>

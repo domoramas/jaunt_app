@@ -4,22 +4,35 @@
 {% block title %}Home{% endblock %}
 
 {% block content %}
+{% comment %} show dashboard if user is logged in {% endcomment %}
 {% if user.is_authenticated %}
-<div class="row">
-  <div class=" col-3 bd-content">
-    <h3> Artist Profiles:</h3>
-      {% for artist in artistprofile_list %}
-    <div class="card" style="width: auto;">
-      <div class="card-body">
-        <h5 class="card-title">{{artist.artist_name}}</h5>
-        <p class="card-text">{{artist.genre}}</p>
-        <a href="{% url 'artist_profile:artist_detail' artist.id %}" class="btn btn-secondary">View Profile</a>
+  {% comment %} if artist profile has been created {% endcomment %}
+  {%if artist in artistprofile_list%}
+  <div class="row">
+    <div class="col-5 bd-content">
+      <h3> Artist Profiles:</h3>
+        {% for artist in artistprofile_list %}
+      <div class="card" style="width: auto;">
+        <div class="card-body">
+          <h5 class="card-title">{{artist.artist_name}}</h5>
+          <p class="card-text">{{artist.genre}}</p>
+          <a href="{% url 'artist_profile:artist_detail' artist.id %}" class="btn btn-secondary">View Profile</a>
+        </div>
       </div>
     </div>
-      {% endfor %}
-      <p><a href= "{% url 'artist_profile:artist_create' %}">create artist profile</a></p>
   </div>
-  <div class="col-auto bd-content">
+      {% endfor %}
+  {% else %} 
+  <div class = "row">
+    <div class= "mx-auto" style = "width: 200px">
+      <h3 id = "welcome"> Welcome to Jaunt {{user.username }}</h3>
+      <p>Lets get started and <a href= "{% url 'artist_profile:artist_create' %}">create an artist profile</a></p>
+    </div>
+  </div>
+
+    {% endif %}
+
+  {% comment %} <div class="col-auto bd-content">
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
       <ol class="carousel-indicators">
         <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -57,7 +70,7 @@
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
        <span class="sr-only">Next</span>
        </a>
-  </div>
+  </div> {% endcomment %}
 {% else %}
 
 <div class= container >

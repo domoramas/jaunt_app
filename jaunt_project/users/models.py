@@ -9,3 +9,4 @@ class CustomUser(AbstractUser):
 
 
     # add title options for user - (artist, promoter, agent each with its own permission and views)
+    # add first and last name 

@@ -3,7 +3,7 @@ from django.urls import reverse
 from users.models import CustomUser
 from phonenumber_field.modelfields import PhoneNumberField
 
-
+# added phone number field and country field.  not updating the db no migrations folder 
 class ArtistProfile(models.Model):
   user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
   artist_name = models.CharField(max_length= 30)

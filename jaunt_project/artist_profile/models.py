@@ -17,7 +17,7 @@ class ArtistProfile(models.Model):
   contact_phone = PhoneNumberField(null=True, blank=True)
   contact_email = models.EmailField(null=True, blank=True)
   website =models.URLField(max_length= 200, null=True, blank=True)
-  # profile_pic=models.ImageField(null=True, blank=True)
+  profile_pic=models.ImageField(null=True, blank=True)
   profile_pic= models.IntegerField(null=True, blank=True)
   instagram= models.CharField(max_length=100, null=True, blank=True)
   twitter= models.CharField(max_length=100, null=True, blank=True)

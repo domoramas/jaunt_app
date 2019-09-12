@@ -92,7 +92,7 @@ WSGI_APPLICATION = 'jaunt.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'jaunt_db',
+        'NAME': 'jauntdb',
         'USER': 'jaunt',
         'PASSWORD': 'jaunt1234',
         'HOST': 'localhost',

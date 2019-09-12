@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     'artist_profile.apps.ArtistProfileConfig',
     'dashboard.apps.DashboardConfig',
     'tours.apps.ToursConfig',
-    'phonenumber_field'
+    'phone_field'
     
 ]
 

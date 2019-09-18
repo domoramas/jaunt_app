@@ -28,7 +28,7 @@ class ArtistProfile(models.Model):
     return self.artist_name
   
   def get_absolute_url(self):
-        return reverse('artist_detail')
+        return reverse('home')
 
 class ArtistImage(models.Model):
   artist = models.ForeignKey(ArtistProfile, on_delete=models.CASCADE)

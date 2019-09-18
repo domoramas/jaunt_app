@@ -28,7 +28,7 @@
   <div class="row">
     <div class="col-12">
       <input type="submit" class= "btn btn-success" value="Save">
-      <a href="{% url 'artist_profile:upload'  artistpk %}" type="button" class="btn btn-success">Upload New</a>
+      <a href="{% url 'artist_profile:upload'  artistpk %}" role="button" class="btn btn-success">Upload New</a>
     </div>
   </div>
 </form>
@@ -37,7 +37,7 @@
   <p>No Images</p>
   <br>
   <input type="submit" class= "btn btn-success" value="Save">
-  <a href="{% url 'artist_profile:upload'  artistpk %}" type="button" class="btn btn-success">Upload New</a>
+  <a href="{% url 'artist_profile:upload'  artistpk %}" class="btn btn-success"roll = 'button'>Upload New</a>
 {% endif %}
 
 {% endblock %}

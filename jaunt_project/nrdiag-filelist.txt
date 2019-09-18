@@ -2,6 +2,9 @@ List of files in zipfile
 Stored file name:Base/Config/newrelic.ini
 Original path:/Users/damianoramas/Desktop/Dom Projects/jaunt_app/jaunt_project/newrelic.ini
 
+Stored file name:Base/Log/newrelic-python-agent.log
+Original path:/private/tmp/newrelic-python-agent.log
+
 Stored file name:Python/Env/pipFreeze.txt
 Original path:pipFreeze.txt
 

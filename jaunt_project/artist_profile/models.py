@@ -5,7 +5,7 @@ from phone_field import PhoneField
 
 # added phone number field and country field.  not updating the db no migrations folder 
 class ArtistProfile(models.Model):
-  user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+  user = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
   artist_name = models.CharField(max_length= 30)
   city = models.CharField(max_length= 50,null=True, blank=True)
   state = models.CharField(max_length= 2,null=True, blank=True)
@@ -28,7 +28,7 @@ class ArtistProfile(models.Model):
     return self.artist_name
   
   def get_absolute_url(self):
-        return reverse('home')
+        return reverse('artist_detail')
 
 class ArtistImage(models.Model):
   artist = models.ForeignKey(ArtistProfile, on_delete=models.CASCADE)

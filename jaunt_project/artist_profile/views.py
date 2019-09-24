@@ -29,7 +29,7 @@ class ArtistView(LoginRequiredMixin, DetailView):
 class CreateArtistView(LoginRequiredMixin,CreateView):
   model = ArtistProfile
   template_name = 'artist_create.html'
-  fields = ['artist_name', 'genre', 'city', 'state', 'contact_first_name', 'contact_last_name', 'contact_phone', 'contact_email','description','twitter','instagram', 'bandcamp']
+  fields = ['artist_name', 'genre', 'city', 'state','description','twitter','instagram', 'bandcamp']
 
   def form_valid(self, form):
     form.instance.user = self.request.user
@@ -38,8 +38,7 @@ class CreateArtistView(LoginRequiredMixin,CreateView):
 class EditArtistView(LoginRequiredMixin, UpdateView):
   model = ArtistProfile
   template_name = 'artist_edit.html'
-  fields = ['artist_name', 'genre', 'city', 'state', 'contact_first_name', 'contact_last_name', 'contact_phone', 'contact_email','description','twitter','instagram', 'bandcamp']
-
+  fields = ['artist_name', 'genre', 'city', 'state','description','twitter','instagram', 'bandcamp']
 class DeleteArtistView(LoginRequiredMixin, DeleteView):
   model = ArtistProfile
   template_name= "artist_delete.html"

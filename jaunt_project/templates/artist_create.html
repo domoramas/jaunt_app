@@ -29,7 +29,7 @@
           {{ form.country| as_crispy_field }}
         </div> {% endcomment %}
       </div>
-      <div class = "row">
+      {% comment %} <div class = "row">
         <div class= "col-4">
           {{ form.contact_first_name| as_crispy_field }}
         </div>
@@ -44,7 +44,7 @@
         <div class= "col-4">
           {{ form.contact_email| as_crispy_field }}
         </div>
-      </div>
+      </div> {% endcomment %}
       <div class = "row">
         <div class= "col-4">
           {{form.description | as_crispy_field }}

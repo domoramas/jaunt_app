@@ -7,10 +7,10 @@
 {% comment %} show dashboard if user is logged in {% endcomment %}
 {% if user.is_authenticated %}
   {% comment %} if artist profile has been created {% endcomment %}
-{%if artistprofile_list.length >  1 %}
+{% comment %} {%if artistprofile_list.length >  1 %} {% endcomment %}
   <div class="row">
     <div class="col-5 bd-content">
-      <h3> Artist Profiles:</h3>
+      <h3> Artist Profile:</h3>
         {% for artist in artistprofile_list %}
       <div class="card" style="width: auto;">
         <div class="card-body">
@@ -23,14 +23,13 @@
     </div>
   </div>
        
-  {% else %} 
-  <div class = "row">
+  {% comment %} {% else %}  {% endcomment %}
+   <div class = "row"> 
     <div class= "mx-auto" style = "width: 200px">
       <h3 id = "welcome"> Welcome to Jaunt {{user.username }}</h3>
       <p>Lets get started and <a href= "{% url 'artist_profile:artist_create' %}">create an artist profile</a></p>
     </div>
-  </div>
-  {% endif %}
+  </div> 
 
   {% comment %} <div class="col-auto bd-content">
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">

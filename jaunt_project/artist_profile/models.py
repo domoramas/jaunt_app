@@ -12,10 +12,10 @@ class ArtistProfile(models.Model):
   country = models.CharField(max_length=50, null = True, blank = True)
   genre = models.CharField(max_length= 30)
   description = models.TextField(max_length= 800, null=True, blank=True)
-  contact_first_name = models.CharField(max_length= 30)
-  contact_last_name = models.CharField(max_length = 30)
-  contact_phone = PhoneField(null=True, blank=True)
-  contact_email = models.EmailField(null=True, blank=True)
+  # contact_first_name = models.CharField(max_length= 30)
+  # contact_last_name = models.CharField(max_length = 30)
+  # contact_phone = PhoneField(null=True, blank=True)
+  # contact_email = models.EmailField(null=True, blank=True)
   website =models.URLField(max_length= 200, null=True, blank=True)
   profile_pic=models.ImageField(null=True, blank=True)
   profile_pic= models.IntegerField(null=True, blank=True)
@@ -28,7 +28,7 @@ class ArtistProfile(models.Model):
     return self.artist_name
   
   def get_absolute_url(self):
-        return reverse('artist_detail')
+        return reverse('home')
 
 class ArtistImage(models.Model):
   artist = models.ForeignKey(ArtistProfile, on_delete=models.CASCADE)

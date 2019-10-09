@@ -4,6 +4,8 @@ from users.models import CustomUser
 from phone_field import PhoneField
 
 # added phone number field and country field.  not updating the db no migrations folder 
+
+# move city, state, country and contact info to user set up
 class ArtistProfile(models.Model):
   user = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
   artist_name = models.CharField(max_length= 30)

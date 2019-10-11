@@ -8,3 +8,5 @@ class ImageForm(forms.ModelForm):
       fields = ('image',)
 
 
+# create check box field for genres 
+# drop down list for state

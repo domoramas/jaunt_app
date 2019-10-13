@@ -4,6 +4,7 @@ from django.views import generic
 from artist_profile.models import ArtistProfile, ArtistImage
 from users.models import CustomUser
 
+# view needs to route to create artist profile page if one has not been created after login before
 class DashboardView(generic.ListView):
   model = ArtistProfile
   template_name = "home.html"

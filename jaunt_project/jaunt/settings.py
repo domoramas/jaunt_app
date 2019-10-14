@@ -42,8 +42,8 @@ INSTALLED_APPS = [
     'artist_profile.apps.ArtistProfileConfig',
     'dashboard.apps.DashboardConfig',
     'tours.apps.ToursConfig',
-    'phone_field'
-    
+    'phone_field',
+    'django.contrib.gis',   
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'

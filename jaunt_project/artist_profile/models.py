@@ -11,7 +11,6 @@ class ArtistProfile(models.Model):
   artist_name = models.CharField(max_length= 30)
   city = models.CharField(max_length= 50,null=True, blank=True)
   state = models.CharField(max_length= 20,null=True, blank=True)
-  country = models.CharField(max_length=50, null = True, blank = True)
   genre = models.CharField(max_length= 30)
   description = models.TextField(max_length= 800, null=True, blank=True)
   website =models.URLField(max_length= 200, null=True, blank=True)

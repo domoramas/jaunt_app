@@ -1,5 +1,8 @@
 from django import forms
 from  .models import ArtistImage, ArtistProfile
+from django.forms import widgets, ModelForm
+from users.models import CustomUser
+from django.utils.translation import gettext_lazy as _
 
 # create custom form to create/edit artist profile
 # create check box or drop down for genre field to make it easier to catagorize 
@@ -71,36 +74,21 @@ STATE_CHOICES = [
 #
 # class CreateArtist(forms.Form):
   
-#   artist = forms.ModelChoiceField(queryset= ArtistProfile.objects.all())
-    
-#   tour_name = forms.CharField(
-#     max_length= 200, 
-#     label= "Tour Name",
-#     )
-#   performers = forms.CharField(
-#     max_length= 200
-#     )
-#   guarantee = forms.IntegerField(
-#     label="Guarantee $"
-#     )
-#   door_split = forms.BooleanField(required= False)
-#   hotel_needed = forms.BooleanField(required= False)
-#   venue_size = forms.CharField(
-#     widget=forms.Select( 
-#     choices=VENUE_SIZE_CHOICES)
-#     )
-#      #  set start and end dates to todays date by default
-#   date_start = forms.DateField(widget= forms.SelectDateWidget, label= "Start Date", initial = datetime.date.today)
-#   date_end = forms.DateField(widget= widgets.SelectDateWidget, label= "End Date", initial = datetime.date.today)
-#   region = forms.MultipleChoiceField(
+#   artist_name = forms.CharField(max_length= 30)
+#   genre= forms.MultipleChoiceField(
 #     widget=forms.CheckboxSelectMultiple,
-#     choices=REGION_CHOICES)
+#     choices=GENRE_CHOICES)
+    
+#   city = forms.CharField(
+#     max_length= 20, 
+#     )
+#   state = forms.CharField(
+#     widget=forms.Select( 
+#     choices=STATE_CHOICES)
+#     )
+#
 
-
-#   def __init__(self, user, *args, **kwargs):
-#     super(CreateTour, self).__init__(*args, **kwargs)
-#     self.fields['artist'].queryset = ArtistProfile.objects.filter(user=user)
-
+# 
 
 # class CreateArtistModelform(ModelForm):
 #    class Meta:

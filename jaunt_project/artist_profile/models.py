@@ -2,12 +2,13 @@ from django.db import models
 from django.urls import reverse
 from users.models import CustomUser
 from phone_field import PhoneField
+from django.conf import settings
 
 # added phone number field and country field.  not updating the db no migrations folder 
 
 # move city, state, country and contact info to user set up
 class ArtistProfile(models.Model):
-  user = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
+  user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
   artist_name = models.CharField(max_length= 30)
   city = models.CharField(max_length= 50,null=True, blank=True)
   state = models.CharField(max_length= 20,null=True, blank=True)

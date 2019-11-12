@@ -5,13 +5,39 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy, reverse
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.files.storage import FileSystemStorage
-
+from .forms import CreateArtist
 from .models import ArtistProfile, ArtistImage
 from .forms import ImageForm
 from tours.models import Tour, Venue
+from users.models import CustomUser
 
 # View of detailed Artist view
 # select picture view breaks when no picture is selected
+
+def create_artist(request): 
+  if request.method == "POST":
+    form = CreateArtist(request.user, request.POST)
+    if form.is_valid():
+      artist_name = form.cleaned_data["artist_name"]
+      genre = form.cleaned_data["genre"]
+      city = form.cleaned_data["city"]
+      state = form.cleaned_data["state"]
+      # description = form.cleaned_data["description"]
+      # website = form.cleaned_data["website"]
+      artist = ArtistProfile(
+        artist_name= artist_name,
+        genre =genre,
+        city = city,
+        state = state,
+        # description = description,
+        # website = website
+      )
+      artist.save()
+      # form = CreateArtist(request.user)
+      return HttpResponseRedirect(reverse('artist_profile:artist_detail', args=(artist.pk) ))
+  elif request.method == "GET":    
+    form = CreateArtist()
+  return render(request, "artist_create.html", {'form': form} )
 class ArtistView(LoginRequiredMixin, DetailView):
   model = ArtistProfile
   template_name = "artist.html"
@@ -26,14 +52,16 @@ class ArtistView(LoginRequiredMixin, DetailView):
 
 # view to create artist view
 # find way to integrate photo upload better
-class CreateArtistView(LoginRequiredMixin,CreateView):
-  model = ArtistProfile
-  template_name = 'artist_create.html'
-  fields = ['artist_name', 'genre', 'city', 'state','description','twitter','instagram', 'bandcamp']
 
-  def form_valid(self, form):
-    form.instance.user = self.request.user
-    return super().form_valid(form)
+# class CreateArtistView(LoginRequiredMixin,CreateView):
+#   model = ArtistProfile
+#   template_name = 'artist_create.html'
+#   form_class = CreateArtist
+  
+
+#   def form_valid(self, form):
+#     form.instance.user = self.request.user
+#     return super().form_valid(form)
 
 class EditArtistView(LoginRequiredMixin, UpdateView):
   model = ArtistProfile

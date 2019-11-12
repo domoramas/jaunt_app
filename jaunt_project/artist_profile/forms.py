@@ -71,24 +71,28 @@ STATE_CHOICES = [
   ('Wisconsin','WI'),
   ('Wyoming','WY'),
   ]
-#
-# class CreateArtist(forms.Form):
-  
-#   artist_name = forms.CharField(max_length= 30)
-#   genre= forms.MultipleChoiceField(
-#     widget=forms.CheckboxSelectMultiple,
-#     choices=GENRE_CHOICES)
-    
-#   city = forms.CharField(
-#     max_length= 20, 
-#     )
-#   state = forms.CharField(
-#     widget=forms.Select( 
-#     choices=STATE_CHOICES)
-#     )
-#
 
-# 
+class CreateArtist(ModelForm):
+  artist_name = forms.CharField(max_length= 30)
+  genre= forms.MultipleChoiceField(
+    widget=forms.CheckboxSelectMultiple,
+    choices=GENRE_CHOICES)  
+  city = forms.CharField(
+    max_length= 20, 
+    )
+  state = forms.CharField(
+    widget=forms.Select( 
+    choices=STATE_CHOICES)
+    )
+  class Meta:
+    model = ArtistProfile
+    fields = '__all__'
+  # description = forms.CharField(max_length= 200)
+
+  # website = forms.URLField()
+
+
+
 
 # class CreateArtistModelform(ModelForm):
 #    class Meta:

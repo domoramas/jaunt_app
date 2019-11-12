@@ -4,6 +4,7 @@
 {% block title %}Create Profile{% endblock %}
 
 {% block content %}
+  {% if user.is_authenticated %}
 <div class="row justify-content-center">
   <div class="col-md-8">
     <h1 class="mt-2">New Artist Profile</h1>
@@ -25,35 +26,18 @@
         <div class= "col-4">
           {{ form.state| as_crispy_field }}
         </div>
-         {% comment %} <div class= "col-4">
-          {{ form.country| as_crispy_field }}
-        </div> {% endcomment %}
-      </div>
-      {% comment %} <div class = "row">
-        <div class= "col-4">
-          {{ form.contact_first_name| as_crispy_field }}
+       {% comment %} <div class= "col-4">
+          {{ form.website | as_crispy_field }}
         </div>
-        <div class= "col-4">
-          {{ form.contact_last_name| as_crispy_field }}
-        </div>
-      </div>
-       <div class = "row">
-        <div class= "col-4">
-          {{ form.contact_phone| as_crispy_field }}
-        </div>
-        <div class= "col-4">
-          {{ form.contact_email| as_crispy_field }}
-        </div>
-      </div> {% endcomment %}
       <div class = "row">
         <div class= "col-4">
           {{form.description | as_crispy_field }}
-        </div>
-        <div class= "col-2">
+        </div> {% endcomment %}
+        {% comment %} <div class= "col-2">
           {{ form.twitter| as_crispy_field }}
           {{ form.instagram| as_crispy_field }}
           {{ form.bandcamp| as_crispy_field }}
-        </div>
+        </div> {% endcomment %}
       </div>
       <div class = "row">
         <div class = "col-4">
@@ -64,5 +48,6 @@
     </form> 
   </div>
 </div>
+  {% endif %}
 {% endblock %}
 

@@ -10,11 +10,12 @@ from .models import ArtistProfile, ArtistImage
 from .forms import ImageForm
 from tours.models import Tour, Venue
 from users.models import CustomUser
-
+from django.conf import settings
 # View of detailed Artist view
 # select picture view breaks when no picture is selected
 
 def create_artist(request): 
+
   if request.method == "POST":
     form = CreateArtist(request.user, request.POST)
     if form.is_valid():
@@ -22,22 +23,25 @@ def create_artist(request):
       genre = form.cleaned_data["genre"]
       city = form.cleaned_data["city"]
       state = form.cleaned_data["state"]
-      # description = form.cleaned_data["description"]
-      # website = form.cleaned_data["website"]
+      description = form.cleaned_data["description"]
+      website = form.cleaned_data["website"]
       artist = ArtistProfile(
         artist_name= artist_name,
         genre =genre,
         city = city,
         state = state,
-        # description = description,
+        description = description,
         # website = website
       )
+      print(artist)
       artist.save()
       # form = CreateArtist(request.user)
       return HttpResponseRedirect(reverse('artist_profile:artist_detail', args=(artist.pk) ))
   elif request.method == "GET":    
     form = CreateArtist()
   return render(request, "artist_create.html", {'form': form} )
+
+
 class ArtistView(LoginRequiredMixin, DetailView):
   model = ArtistProfile
   template_name = "artist.html"

@@ -1,7 +1,7 @@
 from django import forms
 from  .models import ArtistImage, ArtistProfile
 from django.forms import widgets, ModelForm
-from users.models import CustomUser
+# from users.models import CustomUser
 from django.utils.translation import gettext_lazy as _
 
 # create custom form to create/edit artist profile
@@ -84,12 +84,17 @@ class CreateArtist(ModelForm):
     widget=forms.Select( 
     choices=STATE_CHOICES)
     )
+  description = forms.CharField(
+    widget = forms.Textarea,
+    max_length= 200)
+
+  website = forms.URLField()
   class Meta:
     model = ArtistProfile
     fields = '__all__'
   # description = forms.CharField(max_length= 200)
 
-  # website = forms.URLField()
+   
 
 
 

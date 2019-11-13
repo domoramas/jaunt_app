@@ -1,7 +1,5 @@
 from django.db import models
 from django.urls import reverse
-from users.models import CustomUser
-from phone_field import PhoneField
 from django.conf import settings
 
 # added phone number field and country field.  not updating the db no migrations folder 
